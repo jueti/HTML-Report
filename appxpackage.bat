@@ -1,1 +1,1 @@
-powershell.exe -ExecutionPolicy bypass -c ".\appxpackage.ps1"
+powershell.exe -NoProfile -ExecutionPolicy Bypass ".\appxpackage.ps1"
