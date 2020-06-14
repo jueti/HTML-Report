@@ -93,7 +93,8 @@
 </script>
 "@
 
-$Title = '计算机上安装的应用'
+$CurrentDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
+$Title = 'Installed UWP Packages'
 
 Get-AppxPackage |
 select @{name="Name";expression={(Get-AppxPackageManifest $_.PackageFullName).package.properties.displayname}},
@@ -103,4 +104,4 @@ Version |
 ? {$_.Publisher -notlike "Microsoft Platform Extensions"} |
 ? {$_.Name -notlike "*ms-resource*"} |
 ConvertTo-Html -Title $Title -Head $Header -PreContent "<h1>$Title</h1>" -Property Name, Publisher, Version | 
-Out-File 'appxpackage.html'
+Out-File "${CurrentDir}\Appxpackage.html"

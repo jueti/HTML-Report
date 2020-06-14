@@ -91,6 +91,7 @@
 </script>
 "@
 
+$CurrentDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
 $Title = 'Installed Programs'
 
 get-package | 
@@ -104,4 +105,4 @@ get-package |
 ? {$_.Name -notlike "*KB2504637*"} | 
 select Name, Version |
 ConvertTo-Html -Title $Title -Head $Header -PreContent "<h1>$Title</h1>" -Property Name, Version | 
-Out-File 'Programs.html'
+Out-File "${CurrentDir}\Programs.html"
